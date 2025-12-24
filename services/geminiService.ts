@@ -16,7 +16,7 @@ export const generateChristmasWish = (name: string, giftLink: string): string =>
             
             <div style="text-align: left; line-height: 1.8; color: #cbd5e1; font-size: 16px; font-style: italic; margin-bottom: 40px;">
               Chào ${name},<br><br>
-              Giáng sinh này, tớ muốn dành tặng cậu một bất ngờ nho nhỏ. Một không gian lung linh tớ đã chuẩn bị riêng cho cậu...<br><br>
+              Giáng sinh này, tớ muốn dành tặng cậu một bất ngờ nho nhỏ. Một không gian lung linh mình đã chuẩn bị cho cậu...<br><br>
               Chúc cậu luôn giữ được sự ấm áp trong tim và nụ cười trên môi. Hãy nhấn vào nút bên dưới để mở món quà nhé!<br><br>
               <strong>Merry Christmas! 🤍</strong>
             </div>
@@ -33,7 +33,7 @@ export const generateChristmasWish = (name: string, giftLink: string): string =>
             </table>
 
             <div style="margin-top: 50px; border-top: 1px solid #1e293b; padding-top: 25px;">
-              <p style="color: #ef4444; font-size: 20px; font-family: 'Georgia', serif; margin: 0;">From LMP With Love</p>
+              <p style="color: #ef4444; font-size: 20px; font-family: 'Dancing Script', serif; margin: 0;">From LMP With Love</p>
             </div>
 
           </td>

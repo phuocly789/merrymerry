@@ -7,13 +7,13 @@ const ChristmasTree: React.FC = () => {
       {/* Dynamic Background Atmosphere */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(15,23,42,1)_0%,rgba(2,6,23,1)_100%)]"></div>
 
-      {/* NEW: Aurora Borealis Effect - Magic Atmosphere */}
+      {/* Aurora Borealis Effect - Magic Atmosphere */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[50%] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent blur-[120px] animate-aurora-1"></div>
         <div className="absolute top-[5%] left-[-20%] w-[140%] h-[40%] bg-gradient-to-r from-transparent via-blue-500/10 to-transparent blur-[100px] animate-aurora-2"></div>
       </div>
 
-      {/* NEW: Shooting Stars */}
+      {/* Shooting Stars */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(5)].map((_, i) => (
           <div
@@ -30,7 +30,7 @@ const ChristmasTree: React.FC = () => {
         ))}
       </div>
 
-      {/* NEW: Santa Sleigh Animation */}
+      {/* Santa Sleigh Animation */}
       <div className="absolute top-24 right-[-400px] animate-santa-fly z-0 opacity-40 pointer-events-none">
          <div className="flex items-center gap-2 transform scale-x-[-1]">
             <span className="text-4xl filter drop-shadow-[0_0_15px_white]">🛷</span>
@@ -40,7 +40,7 @@ const ChristmasTree: React.FC = () => {
          </div>
       </div>
 
-      {/* NEW: Ground Mist for Depth */}
+      {/* Ground Mist for Depth */}
       <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-white/5 to-transparent blur-[80px] pointer-events-none z-10 opacity-30"></div>
 
       {/* Floating Magic Dust */}
@@ -63,7 +63,7 @@ const ChristmasTree: React.FC = () => {
       </div>
 
       <div className="relative z-10 flex flex-col items-center scale-75 md:scale-100">
-        {/* NEW: Tree Aura Glow behind the star */}
+        {/* Tree Aura Glow behind the star */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[600px] bg-green-500/10 blur-[120px] rounded-full z-0 animate-pulse"></div>
 
         {/* The North Star */}
@@ -113,7 +113,7 @@ const ChristmasTree: React.FC = () => {
                 />
               ))}
               
-              {/* NEW: Delicate Silver Garland Lines */}
+              {/* Delicate Silver Garland Lines */}
               <div className="absolute w-[200%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[15deg] top-[55%] left-[-50%] blur-[0.5px]"></div>
             </div>
           ))}
@@ -136,8 +136,9 @@ const ChristmasTree: React.FC = () => {
         </div>
       </div>
 
-      <div className="mt-16 text-center px-6 z-20 max-w-4xl">
-        <h1 className="text-7xl md:text-9xl font-cursive text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-200 to-green-500 mb-8 filter drop-shadow-lg">
+      <div className="mt-16 text-center px-6 z-20 max-w-4xl relative">
+        {/* FIX: Thêm leading-tight và py-4 để chữ không bị cắt ở trên/dưới */}
+        <h1 className="text-7xl md:text-9xl font-cursive text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-200 to-green-500 mb-8 filter drop-shadow-lg leading-[1.2] py-4">
           Noel An Lành
         </h1>
         <p className="text-gray-300 text-xl md:text-2xl font-light italic leading-relaxed tracking-wide opacity-80 animate-fade-up">
@@ -145,7 +146,7 @@ const ChristmasTree: React.FC = () => {
         </p>
         <div className="mt-10 flex items-center justify-center gap-6 opacity-60">
           <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-red-500"></div>
-         <span className="text-red-500 font-cursive text-4xl">From LMP With Love</span>
+          <span className="text-red-500 font-cursive text-4xl">From LMP With Love</span>
           <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-red-500"></div>
         </div>
       </div>
@@ -172,7 +173,6 @@ const ChristmasTree: React.FC = () => {
           0% { opacity: 0; transform: translateY(30px); }
           100% { opacity: 1; transform: translateY(0); }
         }
-        /* NEW KEYFRAMES */
         @keyframes aurora-1 {
           0%, 100% { transform: translateX(-5%) skewX(-10deg); opacity: 0.1; }
           50% { transform: translateX(5%) skewX(10deg); opacity: 0.4; }

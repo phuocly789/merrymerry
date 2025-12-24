@@ -3,16 +3,17 @@ import React, { useState, useEffect } from 'react';
 import { AppState } from './types';
 import Snowfall from './components/Snowfall';
 import ChristmasTree from './components/ChristmasTree';
+import LoadingScreen from './components/LoadingScreen';
 import { generateChristmasWish } from './services/geminiService';
 import { Send, CheckCircle2, Loader2, Settings } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const App: React.FC = () => {
   const [isSenderMode, setIsSenderMode] = useState(false);
-  const [appState, setAppState] = useState<AppState>(AppState.LANDING);
+  const [appState, setAppState] = useState<AppState>(AppState.INITIAL_LOADING);
   const [emailsRaw, setEmailsRaw] = useState('');
   const [name, setName] = useState('');
-  const [customUrl, setCustomUrl] = useState('https://lmp.id.vn'); 
+  const [customUrl, setCustomUrl] = useState('https://merrymerry-two.vercel.app/'); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [progress, setProgress] = useState({ current: 0, total: 0 });
@@ -24,6 +25,11 @@ const App: React.FC = () => {
   const EMAILJS_PUBLIC_KEY = 'i2DbkgoG6XJRD74OG'; 
 
   useEffect(() => {
+    // Giả lập tải tài nguyên trong 3 giây để hiệu ứng loading mượt mà
+    const loadTimer = setTimeout(() => {
+      setAppState(AppState.LANDING);
+    }, 3500);
+
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('mode') === 'sender') {
       setIsSenderMode(true);
@@ -33,6 +39,8 @@ const App: React.FC = () => {
     if (!currentOrigin.includes('localhost') && currentOrigin.startsWith('http')) {
       setCustomUrl(currentOrigin);
     }
+
+    return () => clearTimeout(loadTimer);
   }, []);
 
   const handleSend = async (e: React.FormEvent) => {
@@ -80,6 +88,10 @@ const App: React.FC = () => {
       setLoading(false);
     }
   };
+
+  if (appState === AppState.INITIAL_LOADING) {
+    return <LoadingScreen />;
+  }
 
   if (!isSenderMode) {
     return (

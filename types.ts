@@ -6,6 +6,7 @@ export interface WishData {
 }
 
 export enum AppState {
+  INITIAL_LOADING = 'INITIAL_LOADING',
   LANDING = 'LANDING',
   SENDING = 'SENDING',
   SENT_SUCCESS = 'SENT_SUCCESS',
