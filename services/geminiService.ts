@@ -17,7 +17,7 @@ export const generateChristmasWish = (name: string, giftLink: string): string =>
             <div style="text-align: left; line-height: 1.8; color: #cbd5e1; font-size: 16px; font-style: italic; margin-bottom: 40px;">
               Chào ${name},<br><br>
               Giáng sinh này, tớ muốn dành tặng cậu một bất ngờ nho nhỏ. Một không gian lung linh tớ đã chuẩn bị cho cậu...<br><br>
-              Chúc cậu luôn giữ được sự ấm áp trong tim và nụ cười trên môi. Hãy nhấn vào nút bên dưới để mở món quà nhé!<br><br>
+              Chúc cậu luôn giữ được sự ấm áp trong tim và nụ cười trên môi. Hãy nhấn vào nút bên dưới để mở món quà nhé! ( có lap thì mở bằng lap nha 🙁 )<br><br>
               <strong>Merry Christmas! 🤍</strong>
             </div>
 
