@@ -124,7 +124,11 @@ const App: React.FC = () => {
   };
 
   if (appState === AppState.INITIAL_LOADING) {
-    return <LoadingScreen onComplete={handleStartExperience} />;
+    return <LoadingScreen
+      onComplete={handleStartExperience}
+      onUserInteract={fadeInMusic}
+    />
+
   }
 
   return (

@@ -4,9 +4,11 @@ import { Gift, Sparkles } from 'lucide-react';
 
 interface LoadingScreenProps {
   onComplete: () => void;
+  onUserInteract: () => void;
 }
 
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
+
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete, onUserInteract}) => {
   const [percent, setPercent] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isExploding, setIsExploding] = useState(false);
@@ -26,12 +28,14 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   }, []);
 
   const handleOpenGift = () => {
+    onUserInteract(); // 🎵 PLAY NHẠC NGAY TẠI CLICK
     setIsExploding(true);
-    // Chờ hiệu ứng nổ diễn ra khoảng 1.2 giây rồi mới gọi onComplete
+
     setTimeout(() => {
       onComplete();
     }, 1200);
   };
+
 
   return (
     <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center transition-all duration-1000 ${isExploding ? 'bg-white' : 'bg-[#020617]'} ${isExploding ? 'animate-screenshake' : ''}`}>
