@@ -7,6 +7,7 @@ import LoadingScreen from './components/LoadingScreen';
 import { generateChristmasWish } from './services/geminiService';
 import { Send, CheckCircle2, Loader2, Settings, Mail, Music, Music2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+,
 const App: React.FC = () => {
   const [isSenderMode, setIsSenderMode] = useState(false);
   const [appState, setAppState] = useState<AppState>(AppState.INITIAL_LOADING);
@@ -20,6 +21,28 @@ const App: React.FC = () => {
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+
+  const fadeInMusic = () => {
+    if (!audioRef.current) return;
+
+    audioRef.current.volume = 0;
+    audioRef.current.play().catch(() => { });
+
+    let v = 0;
+    const fade = setInterval(() => {
+      if (!audioRef.current) {
+        clearInterval(fade);
+        return;
+      }
+
+      v += 0.02;
+      audioRef.current.volume = Math.min(v, 0.5);
+
+      if (v >= 0.5) {
+        clearInterval(fade);
+      }
+    }, 60);
+  };
   // EmailJS Configuration
   const EMAILJS_SERVICE_ID = 'service_judgzwr';
   const EMAILJS_TEMPLATE_ID = 'template_7alaztw';
@@ -39,12 +62,10 @@ const App: React.FC = () => {
 
   const handleStartExperience = () => {
     setAppState(AppState.LANDING);
-    if (audioRef.current) {
-      // Đảm bảo audio có volume và bắt đầu phát
-      audioRef.current.volume = 0.5;
-      audioRef.current.play().catch(e => console.log("Audio play blocked or error:", e));
-    }
+    fadeInMusic(); // 🎵 NHẠC BẮT ĐẦU TẠI ĐÂY
   };
+
+
 
   const toggleMusic = () => {
     if (audioRef.current) {
@@ -111,7 +132,7 @@ const App: React.FC = () => {
     <div className="bg-[#020617] text-gray-100 min-h-screen overflow-x-hidden relative">
       <audio
         ref={audioRef}
-        src="./christmas-jazz-christmas-holiday-347485.mp3"
+        src="/christmas-jazz-christmas-holiday-347485.mp3"
         loop
         preload="auto"
       />
