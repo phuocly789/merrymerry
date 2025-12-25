@@ -7,7 +7,6 @@ import LoadingScreen from './components/LoadingScreen';
 import { generateChristmasWish } from './services/geminiService';
 import { Send, CheckCircle2, Loader2, Settings, Mail, Music, Music2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-,
 const App: React.FC = () => {
   const [isSenderMode, setIsSenderMode] = useState(false);
   const [appState, setAppState] = useState<AppState>(AppState.INITIAL_LOADING);
