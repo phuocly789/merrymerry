@@ -7,7 +7,7 @@ const ChristmasTree: React.FC = () => {
       {/* Dynamic Background Atmosphere */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(15,23,42,1)_0%,rgba(2,6,23,1)_100%)]"></div>
 
-      {/* Aurora Borealis Effect - Magic Atmosphere */}
+      {/* Aurora Borealis Effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[50%] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent blur-[120px] animate-aurora-1"></div>
         <div className="absolute top-[5%] left-[-20%] w-[140%] h-[40%] bg-gradient-to-r from-transparent via-blue-500/10 to-transparent blur-[100px] animate-aurora-2"></div>
@@ -30,17 +30,16 @@ const ChristmasTree: React.FC = () => {
         ))}
       </div>
 
-      {/* Santa Sleigh Animation */}
+      {/* Santa Sleigh */}
       <div className="absolute top-24 right-[-400px] animate-santa-fly z-0 opacity-40 pointer-events-none">
-         <div className="flex items-center gap-2 transform scale-x-[-1]">
-            <span className="text-4xl filter drop-shadow-[0_0_15px_white]">🛷</span>
-            <span className="text-3xl">🦌</span>
-            <span className="text-3xl">🦌</span>
-            <span className="text-4xl">🎅</span>
-         </div>
+        <div className="flex items-center gap-2 transform scale-x-[-1]">
+          <span className="text-4xl filter drop-shadow-[0_0_15px_white]">🛷</span>
+          <span className="text-3xl">🦌</span>
+          <span className="text-3xl">🦌</span>
+          <span className="text-4xl">🎅</span>
+        </div>
       </div>
 
-      {/* Ground Mist for Depth */}
       <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-white/5 to-transparent blur-[80px] pointer-events-none z-10 opacity-30"></div>
 
       {/* Floating Magic Dust */}
@@ -63,7 +62,6 @@ const ChristmasTree: React.FC = () => {
       </div>
 
       <div className="relative z-10 flex flex-col items-center scale-75 md:scale-100">
-        {/* Tree Aura Glow behind the star */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[600px] bg-green-500/10 blur-[120px] rounded-full z-0 animate-pulse"></div>
 
         {/* The North Star */}
@@ -74,17 +72,17 @@ const ChristmasTree: React.FC = () => {
           </svg>
         </div>
 
-        {/* 3D Layered Tree Body */}
+        {/* Tree Body */}
         <div className="flex flex-col items-center" style={{ perspective: '1500px' }}>
           {[
-            { w: '180px', h: '140px', mt: '0', z: '40', color: '#064e3b', lights: 15 },
-            { w: '280px', h: '200px', mt: '-70px', z: '30', color: '#065f46', lights: 22 },
-            { w: '400px', h: '260px', mt: '-100px', z: '20', color: '#047857', lights: 30 },
-            { w: '520px', h: '320px', mt: '-130px', z: '10', color: '#064e3b', lights: 45 }
+            { w: '180px', h: '140px', mt: '0', z: '40', color: '#064e3b', lights: 15, garlandPos: '45%' },
+            { w: '280px', h: '200px', mt: '-70px', z: '30', color: '#065f46', lights: 22, garlandPos: '55%' },
+            { w: '400px', h: '260px', mt: '-100px', z: '20', color: '#047857', lights: 30, garlandPos: '60%' },
+            { w: '520px', h: '320px', mt: '-130px', z: '10', color: '#064e3b', lights: 45, garlandPos: '65%' }
           ].map((tier, idx) => (
             <div
               key={idx}
-              className="relative shadow-2xl transition-all duration-700 hover:rotate-y-12 group"
+              className="relative shadow-2xl transition-all duration-700 group overflow-visible"
               style={{
                 width: tier.w,
                 height: tier.h,
@@ -95,30 +93,48 @@ const ChristmasTree: React.FC = () => {
                 boxShadow: '0 20px 50px rgba(0,0,0,0.8), inset 0 -10px 20px rgba(255,255,255,0.05)'
               }}
             >
-              {/* Christmas Ornaments & LED Lights */}
+              {/* LED Lights */}
               {[...Array(tier.lights)].map((_, lIdx) => (
                 <div
                   key={lIdx}
                   className="absolute rounded-full animate-twinkle-premium"
                   style={{
-                    width: lIdx % 3 === 0 ? '10px' : '6px',
-                    height: lIdx % 3 === 0 ? '10px' : '6px',
+                    width: lIdx % 3 === 0 ? '8px' : '5px',
+                    height: lIdx % 3 === 0 ? '8px' : '5px',
                     top: (Math.random() * 60 + 35) + '%',
                     left: (Math.random() * 80 + 10) + '%',
                     background: ['#ef4444', '#facc15', '#3b82f6', '#ffffff', '#ec4899', '#44ff44'][lIdx % 6],
-                    boxShadow: `0 0 20px ${['#ef4444', '#facc15', '#3b82f6', '#ffffff', '#ec4899', '#44ff44'][lIdx % 6]}`,
+                    boxShadow: `0 0 15px ${['#ef4444', '#facc15', '#3b82f6', '#ffffff', '#ec4899', '#44ff44'][lIdx % 6]}`,
                     animationDelay: (Math.random() * 4) + 's',
                     animationDuration: (Math.random() * 3 + 1) + 's'
                   }}
                 />
               ))}
-              
-              {/* Delicate Silver Garland Lines */}
-              <div className="absolute w-[200%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[15deg] top-[55%] left-[-50%] blur-[0.5px]"></div>
+
+              {/* Dải đèn Garland chạy quấn quanh */}
+              <div
+                className="absolute w-[140%] h-[40px] left-[-20%] pointer-events-none z-50 flex items-center justify-around"
+                style={{
+                  top: tier.garlandPos,
+                  transform: 'rotate(-5deg)',
+                }}
+              >
+                {[...Array(12)].map((_, gIdx) => (
+                  <div
+                    key={gIdx}
+                    className="w-3 h-3 rounded-full animate-chasing-lights"
+                    style={{
+                      background: ['#fbbf24', '#f87171', '#34d399'][gIdx % 3],
+                      boxShadow: `0 0 20px ${['#fbbf24', '#f87171', '#34d399'][gIdx % 3]}`,
+                      animationDelay: `${gIdx * 0.2}s`,
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           ))}
 
-          {/* Trunk with Texture */}
+          {/* Trunk */}
           <div className="w-20 h-28 bg-gradient-to-b from-[#451a03] via-[#2d1202] to-[#1a0a04] -mt-5 rounded-b-3xl shadow-[0_10px_30px_rgba(0,0,0,0.6)] border-t border-white/5"></div>
         </div>
 
@@ -137,8 +153,7 @@ const ChristmasTree: React.FC = () => {
       </div>
 
       <div className="mt-16 text-center px-6 z-20 max-w-4xl relative">
-        {/* FIX: Thêm leading-tight và py-4 để chữ không bị cắt ở trên/dưới */}
-        <h1 className="text-7xl md:text-9xl font-cursive text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-200 to-green-500 mb-8 filter drop-shadow-lg leading-[1.2] py-4">
+        <h1 className="text-7xl md:text-9xl font-cursive text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-200 to-green-500 mb-4 filter drop-shadow-lg leading-[1.6] py-12 inline-block overflow-visible">
           Noel An Lành
         </h1>
         <p className="text-gray-300 text-xl md:text-2xl font-light italic leading-relaxed tracking-wide opacity-80 animate-fade-up">
@@ -152,6 +167,12 @@ const ChristmasTree: React.FC = () => {
       </div>
 
       <style>{`
+        @keyframes chasing-lights {
+          0%, 100% { opacity: 0.3; transform: scale(0.8); filter: brightness(1); }
+          50% { opacity: 1; transform: scale(1.3); filter: brightness(2.5); }
+        }
+        .animate-chasing-lights { animation: chasing-lights 1.5s infinite ease-in-out; }
+        
         @keyframes twinkle-premium {
           0%, 100% { opacity: 0.3; transform: scale(0.8); filter: brightness(0.8); }
           50% { opacity: 1; transform: scale(1.4); filter: brightness(1.5); }
