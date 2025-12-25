@@ -77,7 +77,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete, onUserInterac
           </div>
 
           <p className="mt-6 text-white/30 text-[10px] uppercase tracking-[0.6em] font-light animate-pulse text-center">
-            Đang chuẩn bị phép màu... {percent}%
+            Đang chuẩn bị quà cho bạn... {percent}%
           </p>
         </div>
       ) : (
