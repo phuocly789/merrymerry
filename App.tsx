@@ -7,7 +7,6 @@ import LoadingScreen from './components/LoadingScreen';
 import { generateChristmasWish } from './services/geminiService';
 import { Send, CheckCircle2, Loader2, Settings, Mail, Music, Music2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-
 const App: React.FC = () => {
   const [isSenderMode, setIsSenderMode] = useState(false);
   const [appState, setAppState] = useState<AppState>(AppState.INITIAL_LOADING);
@@ -112,7 +111,7 @@ const App: React.FC = () => {
     <div className="bg-[#020617] text-gray-100 min-h-screen overflow-x-hidden relative">
       <audio
         ref={audioRef}
-        src="https://cdn.pixabay.com/audio/2021/11/25/audio_82312b3227.mp3"
+        src="./christmas-jazz-christmas-holiday-347485.mp3"
         loop
         preload="auto"
       />
@@ -134,15 +133,6 @@ const App: React.FC = () => {
       {!isSenderMode ? (
         <div className="min-h-screen overflow-hidden relative">
           <ChristmasTree />
-
-          <button
-            onClick={() => setIsSenderMode(true)}
-            className="fixed bottom-8 right-8 z-[60] bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full border border-white/20 shadow-2xl transition-all flex items-center gap-2 group animate-bounce-slow"
-            title="Tạo lời chúc mới"
-          >
-            <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            <span className="font-bold text-sm tracking-wide">Gửi lời chúc</span>
-          </button>
         </div>
       ) : (
         /* Màn hình bảng điều khiển gửi thư */
